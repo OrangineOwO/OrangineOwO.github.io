@@ -2,15 +2,13 @@
     "images": [
       {
         "link": "https://i.imgur.com/HASvvBC.jpg",
-        "description": "Descrição da imagem 1",
-        "width": 800,
-        "height": 600
+        "game": "Remnant II",
+        "author": "Lusca"
       },
       {
         "link": "https://i.imgur.com/2uWqvkr.jpg",
-        "description": "Descrição da imagem 2",
-        "width": 1200,
-        "height": 800
+        "game": "Life is Strange: True Colors",
+        "author": "Lusca"
       }
     ]
   }

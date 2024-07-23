@@ -27,13 +27,10 @@ async function loadImagesFromJson() {
       img.src = image.link;
       li.appendChild(img);
 
-      // Adiciona a descrição da imagem como um atributo data
-      img.setAttribute("data-description", image.description);
-
       // Cria o elemento de descrição e o adiciona à lista
       const description = document.createElement("div");
       description.classList.add("image-description");
-      description.textContent = image.description;
+      description.innerHTML = `<div>${image.game}</div><div>Por: ${image.author}</div>`;
       li.appendChild(description);
 
       if (index === 0 && isPortrait(image)) {
@@ -47,7 +44,7 @@ async function loadImagesFromJson() {
       // Adiciona um evento de clique para abrir o modal com a imagem clicada
       img.addEventListener("click", function() {
         currentImageIndex = index;
-        openModal(image.link, image.description, image.description);
+        openModal(image.link, image.game, image.author);
       });
 
       // Extrai e aplica as cores vibrantes à imagem
@@ -61,6 +58,7 @@ async function loadImagesFromJson() {
     console.error("Erro ao carregar imagens do JSON:", error);
   }
 }
+
 
 // Função para extrair e aplicar as cores vibrantes a uma imagem
 function extractAndApplyColors(imageUrl, listItem) {
@@ -228,6 +226,19 @@ function searchImages() {
 // Função para atualizar a exibição das imagens quando houver uma mudança na barra de pesquisa
 document.getElementById("searchInput").addEventListener("input", searchImages);
 
+function openFullscreen() {
+  const modalImg = document.getElementById("modal-img");
+  if (modalImg.requestFullscreen) {
+    modalImg.requestFullscreen();
+  } else if (modalImg.mozRequestFullScreen) { /* Firefox */
+    modalImg.mozRequestFullScreen();
+  } else if (modalImg.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    modalImg.webkitRequestFullscreen();
+  } else if (modalImg.msRequestFullscreen) { /* IE/Edge */
+    modalImg.msRequestFullscreen();
+  }
+}
+
 // Função para atualizar a exibição das imagens quando um filtro é aplicado
 function setActiveNavItem(navItem) {
   const navItems = document.querySelectorAll('.navbar a');
@@ -251,3 +262,21 @@ window.onload = showAll;
 
 // Chama a função para carregar as imagens do gallery.json
 loadImagesFromJson();
+
+// Função para alternar a visualização do grid
+function setGridView(view) {
+  const gallery = document.querySelector('.image-gallery');
+
+  if (view === 'square') {
+    gallery.classList.remove('default-view');
+    gallery.classList.add('square-view');
+  } else {
+    gallery.classList.remove('square-view');
+    gallery.classList.add('default-view');
+  }
+}
+
+// Defina a visualização padrão ao carregar a página
+document.addEventListener("DOMContentLoaded", function() {
+  setGridView('default');
+});
