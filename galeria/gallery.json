@@ -1,0 +1,17 @@
+{
+    "images": [
+      {
+        "link": "https://i.imgur.com/HASvvBC.jpg",
+        "description": "Descrição da imagem 1",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "link": "https://i.imgur.com/HASvvBC.jpg",
+        "description": "Descrição da imagem 2",
+        "width": 1200,
+        "height": 800
+      }
+    ]
+  }
+  

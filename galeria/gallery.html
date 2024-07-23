@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Memories</title>
+<link rel="stylesheet" href="gallery.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a class="active" onclick="showAll()" data-nav="all">Todas</a>
+    <a onclick="showLandscape()" data-nav="landscape">Paisagem</a>
+    <a onclick="showPortrait()" data-nav="portrait">Retrato</a>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" oninput="searchImages()" placeholder="Pesquisar por jogo...">
+      <span id="clearSearch" class="clear-search">&#10006;</span>
+    </div>
+
+    <!-- Ícones para alternar a visualização -->
+    <div class="view-toggle-icons">
+      <i class="fas fa-list" onclick="setGridView('default')"></i>
+      <i class="fas fa-th" onclick="setGridView('square')"></i>
+    </div>
+  </div>
+
+<div id="suggestions" class="suggestions"></div>
+
+<ul class="image-gallery" id="imgur-album"></ul>
+
+<div id="modal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <span class="fullscreen" onclick="openFullscreen()">&#x2922;</span>
+  <img id="modal-img" class="modal-content" src="" alt="Imagem em tamanho completo">
+  <div id="caption"></div>
+</div>
+
+<div id="main-background"></div>
+
+<script src="gallery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/node-vibrant@2.0.3/dist/vibrant.min.js"></script>
+</body>
+</html>
